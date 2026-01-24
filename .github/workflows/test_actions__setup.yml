@@ -44,6 +44,8 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
     name: setup @ ${{ matrix.runs-on }}
     steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+
       # before setup
       - name: helm version
         if: ${{ matrix.check-version }}
