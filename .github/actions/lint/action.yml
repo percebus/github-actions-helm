@@ -23,4 +23,4 @@ runs:
     - name: helm lint
       shell: bash
       run: helm lint ${{ inputs.helm_lint_flags }} ${{ inputs.working-directory }}
-      continue-on-error: ${{ inputs.continue-on-error }}
+      continue-on-error: ${{ inputs.continue-on-error == "true" }}
