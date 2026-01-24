@@ -27,6 +27,7 @@ jobs:
     name: broken FIXME chart
     needs: default
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: ./.github/actions/setup
