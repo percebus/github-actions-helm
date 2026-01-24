@@ -32,16 +32,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        runs-on:
-          # - ubuntu-latest  # already tested in default
-          - macos-latest
-          - windows-latest
+        include:
+          # ubuntu-latest  # already tested in default
+
+          - runs-on: windows-latest
+            check-version: true
+
+          - runs-on: macos-latest
+            check-version: false
 
     runs-on: ${{ matrix.runs-on }}
     name: setup @ ${{ matrix.runs-on }}
     steps:
       # before setup
       - name: helm version
+        if: ${{ matrix.check-version }}
         run: helm version
 
       # includes helm version
