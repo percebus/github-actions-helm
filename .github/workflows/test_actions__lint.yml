@@ -27,20 +27,10 @@ jobs:
     name: broken FIXME chart
     needs: default
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/lint
         with:
           working-directory: assets/charts/FIXME
-          # continue-on-error: "true"
-
-  finish:
-    name: finish
-    needs:
-      - broken
-    runs-on: ubuntu-latest
-    steps:
-      - name: Done
-        run: echo "All lint jobs complete."
+          continue-on-error: "true"
