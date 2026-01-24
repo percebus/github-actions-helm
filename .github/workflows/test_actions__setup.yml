@@ -19,4 +19,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
+
+      # before setup
+      - name: helm version
+        run: helm version
+
+      # includes helm version
+      - uses: ./.github/actions/setup
+
+  os__matrix:
+    needs: default
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ubuntu-latest  # already tested in default
+
+          # "sudo: command not found"
+          # - runs-on: windows-latest
+          #   check-version: true
+
+          - runs-on: macos-latest
+            check-version: false
+
+    runs-on: ${{ matrix.runs-on }}
+    name: setup @ ${{ matrix.runs-on }}
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+
+      # before setup
+      - name: helm version
+        if: ${{ matrix.check-version }}
+        run: helm version
+
+      # includes helm version
+      - uses: ./.github/actions/setup
+
+      # before setup
+      - name: helm version
+        run: helm version
+
+      # includes helm version
       - uses: ./.github/actions/setup
