@@ -19,4 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
+
+      # before setup
+      - name: helm version
+        run: helm version
+
+      # includes helm version
       - uses: ./.github/actions/setup
