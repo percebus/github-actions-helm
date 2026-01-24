@@ -1,0 +1,34 @@
+{
+  "name": "github-actions-helm",
+  "version": "0.1.0",
+  "description": "GitHub re-usable actions and/or workflows for helm",
+  "keywords": [
+    "GitHub",
+    "re-usable",
+    "actions",
+    "workflows",
+    "helm"
+  ],
+  "homepage": "https://github.com/percebus/github-actions-helm#readme",
+  "bugs": {
+    "url": "https://github.com/percebus/github-actions-helm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/percebus/github-actions-helm.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "JCystems",
+  "scripts": {
+    "_prettier": "prettier .",
+    "prettier:check": "npm run _prettier -- --check",
+    "prettier:write": "npm run _prettier -- --write",
+    "lint": "npm run prettier:check",
+    "format": "npm run prettier:write",
+    "postformat": "npm run lint",
+    "test": "exit 0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
