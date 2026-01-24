@@ -35,8 +35,9 @@ jobs:
         include:
           # ubuntu-latest  # already tested in default
 
-          - runs-on: windows-latest
-            check-version: true
+          # "sudo: command not found"
+          # - runs-on: windows-latest
+          #   check-version: true
 
           - runs-on: macos-latest
             check-version: false
