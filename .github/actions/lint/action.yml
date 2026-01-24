@@ -12,9 +12,15 @@ inputs:
     required: false
     default: "--strict"
 
+  continue-on-error:
+    description: Whether to continue on error
+    required: false
+    default: "false"
+
 runs:
   using: composite
   steps:
     - name: helm lint
       shell: bash
       run: helm lint ${{ inputs.helm_lint_flags }} ${{ inputs.working-directory }}
+      continue-on-error: ${{ inputs.continue-on-error }}
