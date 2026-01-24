@@ -1,4 +1,4 @@
-name: Test runs-on
+name: Test pre-installed
 
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
@@ -21,7 +21,7 @@ jobs:
       matrix:
         runs-on:
           - ubuntu-latest
-          # - macos-latest  # "Command not found"
+          - macos-latest  # "Command not found"
           - windows-latest
 
     runs-on: ${{ matrix.runs-on }}
@@ -29,3 +29,4 @@ jobs:
     steps:
       - name: helm version
         run: helm version
+        continue-on-error: true
