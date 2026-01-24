@@ -1,0 +1,28 @@
+name: helm lint
+description: Lint Helm charts
+
+inputs:
+  working-directory:
+    description: The working directory for Helm commands
+    required: false
+    default: ./helm
+
+  helm_lint_flags:
+    description: Additional flags to pass to 'helm lint'
+    required: false
+    default: "--strict"
+
+  continue-on-error:
+    description: Whether to continue on error
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: helm lint
+      shell: bash
+      env:
+        GITHUB_CONTINUE_ON_ERROR: ${{ inputs.continue-on-error }}
+      continue-on-error: ${{ fromJson(env.GITHUB_CONTINUE_ON_ERROR) }}
+      run: helm lint ${{ inputs.helm_lint_flags }} ${{ inputs.working-directory }}
