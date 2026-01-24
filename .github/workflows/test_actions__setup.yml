@@ -26,3 +26,30 @@ jobs:
 
       # includes helm version
       - uses: ./.github/actions/setup
+
+  os__matrix:
+    needs: default
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on:
+          # - ubuntu-latest  # already tested in default
+          - macos-latest
+          - windows-latest
+
+    runs-on: ${{ matrix.runs-on }}
+    name: setup @ ${{ matrix.runs-on }}
+    steps:
+      # before setup
+      - name: helm version
+        run: helm version
+
+      # includes helm version
+      - uses: ./.github/actions/setup
+
+      # before setup
+      - name: helm version
+        run: helm version
+
+      # includes helm version
+      - uses: ./.github/actions/setup

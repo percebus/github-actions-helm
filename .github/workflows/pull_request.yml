@@ -11,6 +11,7 @@ concurrency:
 
 jobs:
   audit:
+    name: Audit
     uses: percebus/github-actions-npm/.github/workflows/dependency-review.yml@main
     permissions:
       contents: read
