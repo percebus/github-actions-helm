@@ -22,6 +22,7 @@ runs:
   steps:
     - name: helm lint
       shell: bash
+      # HACK SRC: https://github.com/actions/runner/issues/1492#issuecomment-1031669824
       env:
         GITHUB_CONTINUE_ON_ERROR: ${{ inputs.continue-on-error }}
       continue-on-error: ${{ fromJson(env.GITHUB_CONTINUE_ON_ERROR) }}
