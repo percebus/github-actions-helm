@@ -22,6 +22,8 @@ jobs:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: ./.github/actions/setup
       - uses: ./.github/actions/lint
+        with:
+          working-directory: ./helm/my-app
 
   broken:
     name: broken FIXME chart

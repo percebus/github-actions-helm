@@ -25,4 +25,4 @@ runs:
       env:
         GITHUB_CONTINUE_ON_ERROR: ${{ inputs.continue-on-error }}
       continue-on-error: ${{ fromJson(env.GITHUB_CONTINUE_ON_ERROR) }}
-      run: helm lint ${{ inputs.helm_lint_flags }} ${{ inputs.working-directory }}/**
+      run: helm lint ${{ inputs.helm_lint_flags }} ${{ inputs.working-directory }}
